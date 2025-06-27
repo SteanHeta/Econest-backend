@@ -1,0 +1,11 @@
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2-binary
+Flask-Bcrypt
+Flask-JWT-Extended
+flasgger
+python-dotenv
+Flask-CORS
+gunicorn
+Authlib
+requests
