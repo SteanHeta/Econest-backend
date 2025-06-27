@@ -13,25 +13,23 @@ class Product(db.Model):
     stock = db.Column(db.Integer, default=0)
     rating = db.Column(db.Float, default=4.5)
     review_count = db.Column(db.Integer, default=100)
+    labels = db.Column(db.String(100))
+    features = db.Column(db.String(100))
 
     def to_dict(self):
-        """
-        Serializes the Product object from the database into a dictionary
-        that EXACTLY matches the frontend ProductCard component's expectations.
-        """
         return {
             "id": self.id,
             "name": self.name,
             "price": self.price,
-            "originalPrice": self.original_price or round(self.price * 1.25, 2), # Calculate if missing
-            "brand": self.brand_name or "Eco Brand", # Provide a default
-            "location": self.location or "Online", # Provide a default
+            "originalPrice": self.original_price or round(self.price * 1.25, 2), 
+            "brand": self.brand_name or "Eco Brand",
+            "location": self.location,
             "rating": self.rating,
             "reviewCount": self.review_count,
-            "categoryTag": self.category or "General", # Provide a default
+            "categoryTag": self.category,
             "imageUrl": self.image_url,
-            # CRITICAL: Add a 'features' array to the response.
-            # This satisfies the frontend's .map() call and prevents crashes.
-            # In a real app, this might come from a many-to-many relationship.
-            "features": (self.category.split(', ') if self.category else ["Sustainable"])
+            "features": self.features or "Organic, Recycled Materials",
+            "labels": self.labels or "Eco-Friendly, Sustainable",
+            "description": self.description,
+            "stock": self.stock,
         }
