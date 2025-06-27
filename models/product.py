@@ -10,9 +10,8 @@ class Product(db.Model):
     brand_name = db.Column(db.String(50))
     location = db.Column(db.String(50))
     image_url = db.Column(db.String(255))
-    stock = db.Column(db.Integer, default=0)
+    reviews = db.Column(db.Integer, default=0)
     rating = db.Column(db.Float, default=4.5)
-    review_count = db.Column(db.Integer, default=100)
     labels = db.Column(db.String(100))
     features = db.Column(db.String(100))
 
@@ -25,11 +24,10 @@ class Product(db.Model):
             "brand": self.brand_name or "Eco Brand",
             "location": self.location,
             "rating": self.rating,
-            "reviewCount": self.review_count,
             "categoryTag": self.category,
             "imageUrl": self.image_url,
             "features": self.features or "Organic, Recycled Materials",
             "labels": self.labels or "Eco-Friendly, Sustainable",
             "description": self.description,
-            "stock": self.stock,
+            "reviews": self.reviews
         }
