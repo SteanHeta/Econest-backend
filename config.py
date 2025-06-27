@@ -1,4 +1,3 @@
-# backend/config.py
 import os
 from dotenv import load_dotenv
 
@@ -15,8 +14,6 @@ class Config:
 
     SWAGGER = {
         'title': 'Eco-Nest Market API',
-        'uiversion': 3,
-        "specs_route": "/apidocs/"
     }
     GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
     GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
