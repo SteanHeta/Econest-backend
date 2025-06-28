@@ -8,7 +8,9 @@ from flasgger import swag_from
 
 community_bp = Blueprint('community', __name__, url_prefix='/api/community')
 
+
 # Add strict_slashes=False to this route
+
 @community_bp.route('/posts', methods=['GET'], strict_slashes=False)
 @swag_from({
     'tags': ['Community'],
@@ -18,7 +20,7 @@ def get_posts():
     posts = CommunityPost.query.order_by(CommunityPost.created_at.desc()).all()
     return jsonify([post.to_dict() for post in posts])
 
-# Also add it to the POST route for consistency
+#
 @community_bp.route('/posts', methods=['POST'], strict_slashes=False)
 @jwt_required()
 @swag_from({

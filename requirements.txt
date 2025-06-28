@@ -9,4 +9,5 @@ python-dotenv
 Flask-CORS
 gunicorn
 Authlib
-requests  
+requests
+
