@@ -1,3 +1,5 @@
+from flask import Flask, jsonify
+
 from config import Config
 from extensions import db, migrate, bcrypt, jwt, swagger, oauth, cors
 from api.home_routes import home_bp
@@ -9,7 +11,6 @@ from api.auth_routes import auth_bp
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-
    
     cors.init_app(app)
     db.init_app(app)
@@ -46,6 +47,7 @@ def create_app(config_class=Config):
 
    
     cors.init_app(app)
+
     db.init_app(app)
     migrate.init_app(app, db)
     bcrypt.init_app(app)
