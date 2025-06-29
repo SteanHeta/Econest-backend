@@ -1,22 +1,23 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True) 
+
+print("--- LOADING CONFIG ---")
+print("DATABASE_URL being used by Flask:", os.getenv('DATABASE_URL'))
+print("--------------------")
 
 class Config:
-    SECRET_KEY = os.getenv('JWT_SECRET_KEY') 
+    """Base configuration."""
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
- 
-    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
-
-
+    
     SWAGGER = {
         'title': 'Eco-Nest Market API',
-
-        'uiversion': 3,
-        "specs_route": "/apidocs/"
+        'uiversion': 3
     }
+
     GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
     GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')

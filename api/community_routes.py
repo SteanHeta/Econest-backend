@@ -4,14 +4,9 @@ from extensions import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flasgger import swag_from
 
-
-
 community_bp = Blueprint('community', __name__, url_prefix='/api/community')
 
-
-# Add strict_slashes=False to this route
-
-@community_bp.route('/posts', methods=['GET'], strict_slashes=False)
+@community_bp.route('/posts/', methods=['GET'], strict_slashes=False)
 @swag_from({
     'tags': ['Community'],
     'summary': 'Get all community posts'
@@ -20,8 +15,7 @@ def get_posts():
     posts = CommunityPost.query.order_by(CommunityPost.created_at.desc()).all()
     return jsonify([post.to_dict() for post in posts])
 
-#
-@community_bp.route('/posts', methods=['POST'], strict_slashes=False)
+@community_bp.route('/posts/', methods=['POST'], strict_slashes=False)
 @jwt_required()
 @swag_from({
     'tags': ['Community'],
@@ -40,3 +34,4 @@ def create_post():
     db.session.add(new_post)
     db.session.commit()
     return jsonify(new_post.to_dict()), 201
+    
