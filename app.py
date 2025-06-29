@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from config import Config
+from dotenv import load_dotenv
 from extensions import db, migrate, bcrypt, jwt, swagger, cors, firebase, init_oauth
 from api.home_routes import home_bp
 from api.product_routes import product_bp
@@ -11,7 +12,8 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    firebase.init_firebase()
+    load_dotenv()
+
     cors.init_app(app)
     db.init_app(app)
     migrate.init_app(app, db)
