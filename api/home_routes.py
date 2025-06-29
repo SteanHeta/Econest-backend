@@ -12,7 +12,6 @@ home_bp = Blueprint('home', __name__, url_prefix='/api/home')
     'responses': { 200: {'description': 'A list of 3 featured products'} }
 })
 def get_featured_products():
-    """Returns a short list of featured products."""
     products = Product.query.order_by(Product.rating.desc()).limit(3).all()
     return jsonify([p.to_dict() for p in products])
 
@@ -23,6 +22,5 @@ def get_featured_products():
     'responses': { 200: {'description': 'A list of the 2 most recent posts'} }
 })
 def get_latest_posts():
-    """Returns the most recent community posts."""
     posts = CommunityPost.query.order_by(CommunityPost.created_at.desc()).limit(2).all()
     return jsonify([p.to_dict() for p in posts])

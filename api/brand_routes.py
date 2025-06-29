@@ -1,11 +1,9 @@
 from flask import Blueprint, jsonify
-from seed_data import brands_data
 from models.brand import Brand
 from flasgger import swag_from
 
 brand_bp = Blueprint('brands', __name__, url_prefix='/api/brands')
 
-# Add strict_slashes=False to this route
 @brand_bp.route('/', methods=['GET'], strict_slashes=False)
 @swag_from({
     'tags': ['Brands'],

@@ -13,6 +13,123 @@ with app.app_context():
     print("Creating all tables...")
     db.create_all()
     print("Seeding database...")
+
+ 
+    # Seed Users
+    # ==================================
+    user1 = User(username='JaneDoe', email='jane.doe@example.com')
+    user1.set_password('password123')
+    user2 = User(username='JohnSmith', email='john.smith@example.com')
+    user2.set_password('password456')
+    
+ 
+    db.session.add_all([user1, user2])
+    
+    db.session.commit()
+    print("Users seeded.")
+
+    # Seed Brands
+    # ==================================
+    brand_data = [
+          {
+        "id": 21,
+        "name": "EcoWear move Co.",
+        "logo_url": "https://media.canva.com/v2/image-resize/format:JPG/height:452/quality:92/uri:ifs%3A%2F%2FM%2F46658c74-ee7d-470c-a82c-a2bc88c22068/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAFIradi8FadbTDRJqJiWoxVoPE4u576XAe3XpesSD921&exp=1750941429&osig=AAAAAAAAAAAAAAAAAAAAAHzYFnjDoi3rh3Aapnjv3ZKCb2qYTe9MV5lzqZM76-LT&signer=media-rpc&x-canva-quality=screen",
+        "description": "Sustainable fashion made from organic and recycled materials",
+        "location": "Lavington",
+        "productCount": 43,
+        "rating": 4.8,
+        "reviewCount": 342,
+        "story": "Founded by environmental enthusiasts who believe fashion shouldn’t cost the earth. We create beautiful, durable clothing using only sustainable materials and ethical manufacturing practices.",
+        "founded": 2019,
+        "categories": ["Fashion", "Accessories"],
+        "certifications": ["GOTS Certified", "Fair Trade", "B-Corp"],
+        "sustainabilityPractices": [
+            {"name": "Carbon Neutral", "available": True},
+            {"name": "Zero Waste", "available": True},
+            {"name": "Renewable Energy", "available": True},
+        ]
+    },
+        {
+        "id": 22,
+        "name": "Pure fresh Earth",
+        "logo_url": "https://media.canva.com/v2/image-resize/format:JPG/height:452/quality:92/uri:ifs%3A%2F%2FM%2Fb996e5a6-07f2-4e67-9553-f520db356c59/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAMUShSuYj7mxW20ZRdPyU5kqQ2winTnqLv3hI1wF-gT2&exp=1750941749&osig=AAAAAAAAAAAAAAAAAAAAAOkSzyWf1S0gmdiLtnYqxnEIcrD85wknvOdmpgEUWtXe&signer=media-rpc&x-canva-quality=screen",
+        "description": "Natural personal care products from organic ingredients",
+        "location": "Kilimani",
+        "productCount": 38,
+        "rating": 4.6,
+        "reviewCount": 156,
+        "story": "Creating pure, effective personal care products that are kind to your skin and the environment. All our ingredients are ethically sourced and sustainably harvested.",
+        "founded": 2017,
+        "categories": ["Personal Care", "Beauty"],
+        "certifications": ["USDA Organic", "Leaping Bunny", "Vegan Society"],
+        "sustainabilityPractices": [
+            {"name": "Carbon Neutral", "available": False},
+            {"name": "Zero Waste", "available": True},
+            {"name": "Renewable Energy", "available": True},
+        ]
+    },
+    {
+    "id": 23,
+    "name": "Sustaina Co.",
+    "logo_url": "https://media.canva.com/v2/image-resize/format:JPG/height:452/quality:92/uri:ifs%3A%2F%2FM%2F2d1f9d0e-3c4d-4a5e-8f6e-7d3f8a0e5c6f/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAALpXqVzRnWmZkIgDQrTlHwNpRqXoVsGtEpMvOj0CqK4S&exp=1750941850&osig=AAAAAAAAAAAAAAAAAAAAANsYqZpZvQbBmVqKwXrLsTnYpZoVqEwIrLmNcXhQ&signer=media-rpc&x-canva-quality=screen",
+    "description": "Handmade eco-friendly home goods and décor items.",
+    "location": "Tokyo",
+    "productCount": 28,
+    "rating": 4.6,
+    "reviewCount": 187,
+    "story": "TerraCraft creates beautiful, functional home goods using natural materials like bamboo, jute, and reclaimed wood. Each item is handcrafted by artisans committed to sustainable living and fair wages.",
+    "founded": 2018,
+    "categories": ["Home Goods", "Decor"],
+    "certifications": ["Fair Trade", "FSC Certified", "B-Corp"],
+    "sustainabilityPractices": [
+        {"name": "Carbon Neutral", "available": False},
+        {"name": "Zero Waste", "available": True},
+        {"name": "Renewable Energy", "available": True},
+    ]
+  },
+      {
+    "id": 24,
+    "name": "Verde Co.",
+    "logo_url": "https://media.canva.com/v2/image-resize/format:JPG/height:452/quality:92/uri:ifs%3A%2F%2FM%2F7e6d8c0b-5a7e-4f32-ba2f-d4c8a7e8f9a3/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAAKiWxLzVnYmZkIgDQrTlHwNpRqXoVsGtEpMvOj0CqK4S&exp=1750941800&osig=AAAAAAAAAAAAAAAAAAAAAMfUuPzZvQbBmVqKwXrLsTnYpZoVqEwIrLmNcXhQ&signer=media-rpc&x-canva-quality=screen",
+    "description": "Organic food products grown sustainably and delivered locally.",
+    "location": "Karen",
+    "productCount": 56,
+    "rating": 4.7,
+    "reviewCount": 410,
+    "story": "We believe in nourishing communities with clean, organic food that’s grown using regenerative farming techniques. Our farms use zero synthetic pesticides and support local biodiversity.",
+    "founded": 2015,
+    "categories": ["Food", "Organic"],
+    "certifications": ["USDA Organic", "Regenerative Organic Certified", "Non-GMO Project Verified"],
+    "sustainabilityPractices": [
+        {"name": "Carbon Neutral", "available": True},
+        {"name": "Zero Waste", "available": False},
+        {"name": "Renewable Energy", "available": True},
+    ]
+    },
+    {
+    "id": 27,
+    "name": "leanRoots Co.",
+    "logo_url": "https://media.canva.com/v2/image-resize/format:JPG/height:452/quality:92/uri:ifs%3A%2F%2FM%2Fba634239-5c1a-4d3f-b661-63db3b7a6579/watermark:F/width:800?csig=AAAAAAAAAAAAAAAAAAAAALrkKDZfHQfLM5Z68EcxZyRy2f6aJDnyIgDpBJKvRjZ&exp=1750942999&osig=AAAAAAAAAAAAAAAAAAAAADvMWF3zmt1xDk6mSQUm8oT8tRUQjvDbNcy5XcbWJSq&signer=media-rpc&x-canva-quality=screen",
+    "description": "Outdoor gear that respects the outdoors.",
+    "location": "Miami",
+    "productCount": 33,
+    "rating": 4.5,
+    "reviewCount": 122,
+    "story": "leanRoots was founded by explorers and nature-lovers who wanted gear that leaves no trace. Our products are made from responsibly sourced materials and designed for longevity in the wild.",
+    "founded": 2018,
+    "categories": ["Outdoor", "Gear", "Sports & Adventure"],
+    "certifications": ["Fair Trade", "EcoCert"],
+    "sustainabilityPractices": [
+        {"name": "Carbon Neutral", "available": True},
+        {"name": "Zero Waste", "available": True},
+        {"name": "Renewable Energy", "available": False},
+    ]
+},
+    ]
+    for data in brand_data:
+        db.session.add(Brand(**data))
+    print("Brands prepared.")
     
    
     ## seed products
@@ -41,6 +158,14 @@ with app.app_context():
     db.session.add_all([prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15, prod16, prod17, prod18, prod19, prod20])
 
     print("Products prepared.")
+
+ 
+    # Seed Community Posts
+    # ==================================
+    post1 = CommunityPost(title='My Zero-Waste Journey', content='Full content here...', excerpt='It all started with a simple change...', author_id=user1.id)
+    post2 = CommunityPost(title='Top 5 Eco-Friendly Swaps for 2024', content='Full content here...', excerpt='Looking to reduce your carbon footprint? Here are five easy swaps...', author_id=user2.id)
+    db.session.add_all([post1, post2])
+    print("Community Posts prepared.")
 
     db.session.commit()
     print("Database seeded successfully!")
