@@ -2,15 +2,16 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
+
 print("--- LOADING CONFIG (from config.py) ---")
 print("DATABASE_URL being used by Config:", os.getenv('DATABASE_URL'))
 print("FIREBASE_SERVICE_ACCOUNT_JSON being used by Config:", os.getenv('FIREBASE_SERVICE_ACCOUNT_JSON'))
 print("--------------------")
 
 class Config:
-    """Base Flask configuration."""
     SECRET_KEY = os.getenv('SECRET_KEY')
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

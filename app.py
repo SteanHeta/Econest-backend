@@ -20,9 +20,6 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
     CORS(app)
     cors.init_app(app)
     db.init_app(app)
@@ -61,8 +58,3 @@ def create_app(config_class=Config):
 if __name__ == '__main__':
     app = create_app()
     app.run(debug=True, port=5001)
-
-
-from app import create_app
-
-app = create_app()
