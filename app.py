@@ -9,8 +9,14 @@ from api.community_routes import community_bp
 from api.auth_routes import auth_bp
 
 def create_app(config_class=Config):
+
+    app = Flask(_name_)
+    app.config.from_object(config_class)
+
+
     app = Flask(__name__)
     app.config.from_object(config_class)
+
    
     cors.init_app(app)
     db.init_app(app)
@@ -42,7 +48,11 @@ from api.community_routes import community_bp
 from api.auth_routes import auth_bp
 
 def create_app(config_class=Config):
+
+    app = Flask(_name_)
+
     app = Flask(__name__)
+
     app.config.from_object(config_class)
 
    
