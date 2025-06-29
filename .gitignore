@@ -2,8 +2,7 @@ venv/
 .venv/
 *.pyc
 __pycache__/
-
-.env
 config/your-service-account-key.json
+.env
 *.log
 *.sqlite
