@@ -17,8 +17,8 @@ with app.app_context():
  
     # Seed Users
     # ==================================
-    user1 = User(username='JaneDoe', email='jane.doe@example.com')
-    user1.set_password('password123')
+    user1 = User(username='Stean', email='stean5973@gmail.com')
+    user1.set_password('Stean4lyf2#')
     user2 = User(username='JohnSmith', email='john.smith@example.com')
     user2.set_password('password456')
     
