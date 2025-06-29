@@ -14,6 +14,7 @@ class Config:
 
     SWAGGER = {
         'title': 'Eco-Nest Market API',
+
         'uiversion': 3,
         "specs_route": "/apidocs/"
     }
