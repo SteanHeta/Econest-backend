@@ -20,7 +20,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('postgresql://stean:stean@localhost:5432/eco_nest_market')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     CORS(app)
