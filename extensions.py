@@ -7,7 +7,7 @@ from flask_jwt_extended import JWTManager
 from flasgger import Swagger
 from authlib.integrations.flask_client import OAuth
 from flask_cors import CORS
-from firebase_admin import credentials, auth, firestore
+from firebase_admin import credentials
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -27,14 +27,15 @@ if FIREBASE_SERVICE_ACCOUNT_KEY_PATH:
             cred = credentials.Certificate(FIREBASE_SERVICE_ACCOUNT_KEY_PATH)
             firebase = firebase_admin.initialize_app(cred)
         else:
-            print(f"Error: Firebase service account key file not found at {FIREBASE_SERVICE_ACCOUNT_KEY_PATH}")
+            print(f"[Firebase] Error: Key file not found at {FIREBASE_SERVICE_ACCOUNT_KEY_PATH}")
     except Exception as e:
-        print(f"Error initializing Firebase Admin SDK: {e}")
+        print(f"[Firebase] Error initializing Firebase Admin SDK: {e}")
 else:
-    print("Warning: FIREBASE_SERVICE_ACCOUNT_KEY_PATH environment variable not set. Firebase not initialized.")
+    print("[Firebase] Warning: FIREBASE_SERVICE_ACCOUNT_KEY_PATH not set. Firebase not initialized.")
 
 def init_oauth(app):
     oauth.init_app(app)
+    
     oauth.register(
         name='google',
         client_id=os.getenv('GOOGLE_CLIENT_ID'),
