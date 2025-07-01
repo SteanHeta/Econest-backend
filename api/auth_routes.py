@@ -74,6 +74,5 @@ def google_callback():
         )
         db.session.add(user)
         db.session.commit()
-
     access_token = create_access_token(identity=user.id)
     return redirect(f"{FRONTEND_URL}/login/success?token={access_token}")
